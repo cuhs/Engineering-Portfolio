@@ -1,27 +1,52 @@
 "use client";
 
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import "tailwindcss/tailwind.css";
-import {MenuHeader} from "@/components/Header"
+import { useState, useRef } from "react";
+import * as THREE from "three";
 
-export default function Home() {
+function Planet({ radius, speed, color, href, initialAngle }: { radius: number; speed: number; color: string; href: string; initialAngle: number }) {
+  const [zoom, setZoom] = useState(false);
+  const planetRef = useRef<THREE.Mesh>(null);
+
+  useFrame(({ clock }) => {
+    if (planetRef.current) {
+      const t = clock.getElapsedTime() * speed + initialAngle;
+      planetRef.current.position.x = radius * Math.cos(t);
+      planetRef.current.position.z = radius * Math.sin(t);
+    }
+  });
+
   return (
-    <motion.div 
-      className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+    <mesh
+      ref={planetRef}
+      onClick={() => {
+        setZoom(true);
+        setTimeout(() => (window.location.href = href), 1000);
+      }}
+      scale={zoom ? [3, 3, 3] : [2.5, 2.5, 2.5]}
     >
-      <MenuHeader />
-      <motion.div className="flex justify-center items-center h-screen text-4xl font-bold text-aquamarine"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        Welcome to My Portfolio
-      </motion.div>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color={color} metalness={0.3} roughness={0.5} />
+    </mesh>
+  );
+}
+
+export default function WelcomePage() {
+  return (
+    <motion.div className="bg-black text-white w-screen h-screen fixed top-0 left-0">
+      <Canvas camera={{ position: [0, 0, 30] }} className="w-full h-full">
+        <mesh>
+          <sphereGeometry args={[5, 32, 32]} />
+          <meshStandardMaterial color="yellow" emissive="yellow" emissiveIntensity={1} />
+        </mesh>
+        <pointLight position={[0, 0, 0]} intensity={1000} />
+        <Planet radius={10} speed={0.4} color="blue" href="/individual" initialAngle={Math.PI / 3} />  
+        <Planet radius={18} speed={0.2} color="red" href="/team" initialAngle={Math.PI / 6} />  
+        <OrbitControls minDistance={10} maxDistance={30} enableDamping={true} dampingFactor={0.1} />
+      </Canvas>
     </motion.div>
   );
 }
