@@ -4,7 +4,7 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion";
 import "tailwindcss/tailwind.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
 function Planet({ radius, speed, color, href, initialAngle }: { radius: number; speed: number; color: string; href: string; initialAngle: number }) {
@@ -38,7 +38,15 @@ function Planet({ radius, speed, color, href, initialAngle }: { radius: number; 
 }
 
 export default function WelcomePage() {
-  const sunTexture = useLoader(THREE.TextureLoader, "/sun-mode.jpg")
+  const [sunTexture, setSunTexture] = useState<THREE.Texture | null>(null);
+
+  useEffect(() => {
+    const loader = new THREE.TextureLoader();
+    loader.load("/sun-mode.jpg", (texture) => {
+      setSunTexture(texture);
+    });
+  }, []);
+
   return (
     <motion.div className="bg-black text-white w-screen h-screen fixed top-0 left-0">
       <Canvas camera={{ position: [0, 0, 30] }} className="w-full h-full">
