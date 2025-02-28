@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {MenuHeader} from "@/components/Header"
+import {Header} from "@/components/Header"
 export default function IndividualProjects() {
     return (
         <motion.div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen">
-          <MenuHeader />
+          <Header />
           <motion.div className="p-6 text-aquamarine"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
