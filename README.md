@@ -29,10 +29,7 @@ This is a **custom-built** engineering portfolio showcasing **Alexander Hu's** p
 ├── public
 │   ├── projectexample.png # Placeholder project images
 │
-├── styles
-│   ├── globals.css      # Tailwind global styles
 │
-├── .next                # Next.js build files (auto-generated)
 ├── package.json         # Dependencies and scripts
 ├── tailwind.config.js   # TailwindCSS configuration
 ├── tsconfig.json        # TypeScript configuration
