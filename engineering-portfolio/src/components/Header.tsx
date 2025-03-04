@@ -14,15 +14,7 @@ export function Header() {
             onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })} 
             className="hover:text-cyan-400 transition duration-300"
           >
-            About
-          </button>
-        </section>
-        <section id="toProjects" className="text-center relative">
-          <button 
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} 
-            className="hover:text-cyan-400 transition duration-300"
-          >
-              Projects
+            Projects
           </button>
         </section>
       </div>
