@@ -33,10 +33,11 @@ This is a **custom-built** engineering portfolio showcasing **Alexander Hu's** p
 ├── package.json         # Dependencies and scripts
 ├── tailwind.config.js   # TailwindCSS configuration
 ├── tsconfig.json        # TypeScript configuration
+'''
+
 
 ## Contact
-📧 **Email**: alexhu00374@gmail.com  
-🔗 **LinkedIn**: [Alexander Hu](https://www.linkedin.com/in/alex-hu374/)  
-🐙 **GitHub**: [cuhs](https://github.com/cuhs)  
-📸 **Instagram**: [alexhu374](https://instagram.com/alexhu374)
+Email: alexhu00374@gmail.com  
+LinkedIn: [Alexander Hu](https://www.linkedin.com/in/alex-hu374/)  
+GitHub: [cuhs](https://github.com/cuhs)
 
