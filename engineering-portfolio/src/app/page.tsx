@@ -102,20 +102,55 @@ export default function MyWork() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            This website is made from scratch with <span className="text-cyan-500">NextJS</span>, <span className="text-blue-500">NodeJS</span>, and <span className="text-cyan-400">TailwindCSS</span>
+            This website was made from scratch with <span className="text-cyan-500">NextJS</span>, <span className="text-blue-500">NodeJS</span>, and <span className="text-cyan-400">TailwindCSS</span>
           </motion.p>
         )}
       </section>
       
-      <section id="projects" className="p-6 flex flex-col items-center relative">
-        <h1 className="text-4xl mb-6 font-medium text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">My Projects</h1>
-        <div className="flex flex-wrap justify-center gap-6 max-w-6xl">
-          <ProjectCard image="projectexample.png" title="Project 1" description="A cool project I worked on." link="/project-1" />
-          <ProjectCard image="projectexample.png" title="Project 2" description="Another interesting project." link="/project-2" />
-          <ProjectCard image="projectexample.png" title="Team Project 1" description="A collaborative effort." link="/team-project-1" />
-          <ProjectCard image="projectexample.png" title="Team Project 2" description="An exciting group project." link="/team-project-2" />
-        </div>
-      </section>
+      <section id="projects" className="py-20 px-6 flex flex-col items-center relative">
+  <motion.h1 
+    className="text-4xl md:text-5xl mb-3 font-medium text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
+    initial={{ opacity: 0, y: -10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
+  >
+    My Projects
+  </motion.h1>
+  <motion.div
+    className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-12"
+    initial={{ width: 0 }}
+    whileInView={{ width: "6rem" }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  />
+  <div className="flex flex-wrap justify-center gap-4 max-w-6xl">
+    <ProjectCard 
+      image="projectexample.png" 
+      title="Project 1" 
+      description="A sophisticated web application built using React and Node.js that provides real-time data visualization for complex datasets." 
+      link="/project-1" 
+    />
+    <ProjectCard 
+      image="projectexample.png" 
+      title="Project 2" 
+      description="An interactive mobile application developed with Flutter that helps users track their fitness progress and set personalized goals." 
+      link="/project-2" 
+    />
+    <ProjectCard 
+      image="projectexample.png" 
+      title="Team Project 1" 
+      description="A collaborative effort to build an AI-powered recommendation engine that suggests personalized content based on user preferences." 
+      link="/team-project-1" 
+    />
+    <ProjectCard 
+      image="projectexample.png" 
+      title="Team Project 2" 
+      description="An exciting group project focused on creating a sustainable solution for reducing energy consumption in smart homes." 
+      link="/team-project-2" 
+    />
+  </div>
+</section>
     </motion.div>
   );
 }
