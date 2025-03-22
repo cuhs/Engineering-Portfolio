@@ -63,14 +63,47 @@ export default function MyWork() {
           transition={{ duration: 0.8, delay: 0.4 }}
         />
         
-        <motion.p 
-          className="text-xl mb-8 max-w-2xl mx-auto text-gray-300 leading-relaxed"
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+        <motion.div
+          className="max-w-3xl mx-auto mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Developer who is <span className="text-cyan-400 font-medium">passionate</span> about creating <span className="text-blue-400 font-medium">innovative solutions</span> and building <span className="text-cyan-300 font-medium">impactful projects</span>.
-        </motion.p>
+          <motion.p 
+            className="text-xl mb-4 text-gray-300 leading-relaxed"
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Full-stack developer with an interest in 
+            <span className="relative inline-block px-2">
+              <span className="absolute inset-0 bg-cyan-900 bg-opacity-30 rounded-md blur-sm"></span>
+              <span className="relative text-cyan-400 font-medium">ML algorithms</span>
+            </span> 
+            and 
+            <span className="relative inline-block px-2">
+              <span className="absolute inset-0 bg-blue-900 bg-opacity-30 rounded-md blur-sm"></span>
+              <span className="relative text-blue-300 font-medium">cybersecurity challenges</span>
+            </span>
+          </motion.p>
+          <motion.p
+            className="text-xl text-gray-300 leading-relaxed"
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            Focused on building 
+            <span className="relative inline-block px-2">
+              <span className="absolute inset-0 bg-blue-900 bg-opacity-30 rounded-md blur-sm"></span>
+              <span className="relative text-blue-400 font-medium">data-driven applications</span>
+            </span> 
+            and 
+            <span className="relative inline-block px-2">
+              <span className="absolute inset-0 bg-cyan-900 bg-opacity-30 rounded-md blur-sm"></span>
+              <span className="relative text-cyan-300 font-medium">solving complex technical challenges</span>
+            </span>.
+          </motion.p>
+        </motion.div>
         
         <motion.button 
           onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} 
@@ -124,29 +157,29 @@ export default function MyWork() {
     transition={{ duration: 0.8 }}
     viewport={{ once: true }}
   />
-  <div className="flex flex-wrap justify-center gap-4 max-w-6xl">
+  <div className="flex flex-wrap justify-center gap-8 max-w-6xl">
     <ProjectCard 
       image="projectexample.png" 
-      title="Project 1" 
-      description="A sophisticated web application built using React and Node.js that provides real-time data visualization for complex datasets." 
+      title="UCLA Xplore"
+      description="AI-driven extracurricular planner using PostgreSQL database, LLM embeddings, and Python to recommend student activities. Utilized LangChain SQL querying agents to manage 300+ student club timeslots." 
       link="/project-1" 
     />
     <ProjectCard 
       image="projectexample.png" 
-      title="Project 2" 
-      description="An interactive mobile application developed with Flutter that helps users track their fitness progress and set personalized goals." 
+      title="Ad Blocker Chrome Extension" 
+      description="Created Chrome extension using C++ scripting, HTML, JSON, Javascript, and CSS to create ad blocker for over 10,000 ad domains. Implemented manual ad blocking and video ad skipping functionality." 
       link="/project-2" 
     />
     <ProjectCard 
       image="projectexample.png" 
-      title="Team Project 1" 
-      description="A collaborative effort to build an AI-powered recommendation engine that suggests personalized content based on user preferences." 
+      title="African Crises ML Research" 
+      description="Engineered economic data and predicted economic crises by evaluating data in African countries using Python libraries like Pandas, PyTorch, and Scikit-Learn. Tested 3 different models and presented findings." 
       link="/team-project-1" 
     />
     <ProjectCard 
       image="projectexample.png" 
-      title="Team Project 2" 
-      description="An exciting group project focused on creating a sustainable solution for reducing energy consumption in smart homes." 
+      title="RoboCup Junior: Rescue Maze" 
+      description="Implemented sensory depth first search navigation algorithms using C++ and Python, integrating OpenCV libraries with KNN machine learning to navigate randomly generated mazes. Won 1st place nationally." 
       link="/team-project-2" 
     />
   </div>

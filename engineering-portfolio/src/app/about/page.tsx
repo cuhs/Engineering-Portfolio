@@ -104,7 +104,7 @@ export default function AboutPage() {
               </p>
               <p className="mb-4 leading-relaxed">
                 Through engaging in coursework and projects while studying computer science, I've gained valuable experience in <span className="text-blue-300 font-medium">full-stack development</span>, <span className="text-blue-400 font-medium">machine learning</span>, 
-                <span className="text-blue-500 font-medium"> cybersecurity</span>, <span className="text-blue-600 font-medium"> operating systems</span>, and more. Some projects I've worked on are an AI SQL-querying chatbot, an app that notifies students about free foods and events, a roommate finding app for UCLA students, and this portfolio website. <a href="/#projects" className="text-cyan-400 hover:text-cyan-200 font-medium transition-colors duration-300">Discover More</a> about these and other projects I've done!
+                <span className="text-blue-500 font-medium"> cybersecurity</span>, <span className="text-blue-600 font-medium"> operating systems</span>, and more. Some projects I've worked on are an AI SQL-querying chatbot, an app that notifies students about free foods and events, a roommate finding app for UCLA students, and this portfolio website. <a href="/#projects" className="text-cyan-400 hover:text-cyan-200 underline font-medium transition-colors duration-300">Discover More</a> about these and other projects I've done!
               </p>
               <p className="leading-relaxed">
                 When I'm not developing apps or exploring new areas in computer science, I love playing tennis, rock climbing, practicing new songs on piano, reading, playing Monster Hunter World, and backpacking. 

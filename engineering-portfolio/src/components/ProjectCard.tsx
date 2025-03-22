@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function ProjectCard({ image, title, description, link }: { image: string; title: string; description: string; link: string }) {
   return (
-    <Link href={link} className="block w-80 m-4">
+    <Link href={link} className="block w-full md:w-[450px] m-4">
       <motion.div 
         className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl shadow-lg overflow-hidden h-full border border-gray-700 hover:border-cyan-600/40 transition-colors duration-300 cursor-pointer"
         whileHover={{ 
@@ -21,7 +21,7 @@ export function ProjectCard({ image, title, description, link }: { image: string
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <div className="relative overflow-hidden h-48">
+        <div className="relative overflow-hidden h-56">
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-40 z-10" />
           <Image 
             src={`/${image}`} 
@@ -39,7 +39,7 @@ export function ProjectCard({ image, title, description, link }: { image: string
           >
             <h3 className="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">{title}</h3>
             <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 mb-3 rounded-full" />
-            <p className="text-gray-300 mt-3 text-sm leading-relaxed h-16 line-clamp-3">{description}</p>
+            <p className="text-gray-300 mt-3 text-sm leading-relaxed min-h-[120px]">{description}</p>
           </motion.div>
         </div>
       </motion.div>
