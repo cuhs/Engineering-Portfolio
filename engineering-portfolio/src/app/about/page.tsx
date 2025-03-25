@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Header } from "../../components/Header";
-import { FaGraduationCap, FaCode, FaLaptopCode, FaGamepad, FaHiking, FaMusic } from "react-icons/fa";
-import { MdInterests } from "react-icons/md";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaGraduationCap, FaCode} from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import Link from "next/link";
 
 export default function AboutPage() {
 
@@ -100,14 +100,14 @@ export default function AboutPage() {
                 <FaGraduationCap className="mr-2" /> Education & Background
               </h2>
               <p className="mb-4 leading-relaxed">
-                Hi! I'm Alex, a computer science major at <span className="text-blue-400 font-medium">UCLA</span>.
+                Hi! I&apos;m Alex, a computer science major at <span className="text-blue-400 font-medium">UCLA</span>.
               </p>
               <p className="mb-4 leading-relaxed">
-                Through engaging in coursework and projects while studying computer science, I've gained valuable experience in <span className="text-blue-300 font-medium">full-stack development</span>, <span className="text-blue-400 font-medium">machine learning</span>, 
-                <span className="text-blue-500 font-medium"> cybersecurity</span>, <span className="text-blue-600 font-medium"> operating systems</span>, and more. Some projects I've worked on are an AI SQL-querying chatbot, an app that notifies students about free foods and events, a roommate finding app for UCLA students, and this portfolio website. <a href="/#projects" className="text-cyan-400 hover:text-cyan-200 underline font-medium transition-colors duration-300">Discover More</a> about these and other projects I've done!
+                Through engaging in coursework and projects while studying computer science, I&apos;ve gained valuable experience in <span className="text-blue-300 font-medium">full-stack development</span>, <span className="text-blue-400 font-medium">machine learning</span>, 
+                <span className="text-blue-500 font-medium"> cybersecurity</span>, <span className="text-blue-600 font-medium"> operating systems</span>, and more. Some projects I&;ve worked on are an AI SQL-querying chatbot, an app that notifies students about free foods and events, a roommate finding app for UCLA students, and this portfolio website. <Link href="/#projects" className="text-cyan-400 hover:text-cyan-200 underline font-medium transition-colors duration-300">Discover More</Link> about these and other projects I&apos;ve done!
               </p>
               <p className="leading-relaxed">
-                When I'm not developing apps or exploring new areas in computer science, I love playing tennis, rock climbing, practicing new songs on piano, reading, playing Monster Hunter World, and backpacking. 
+                When I&apos;m not developing apps or exploring new areas in computer science, I love playing tennis, rock climbing, practicing new songs on piano, reading, playing Monster Hunter World, and backpacking. 
               </p>
             </div>
             
