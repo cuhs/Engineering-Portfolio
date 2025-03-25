@@ -17,6 +17,7 @@ export function ProjectCard({
   title: string; 
   description: string;
   links?: LinkButton[];
+}) {
   return (
     <div className="block w-full md:w-[450px] m-4">
       <motion.div 
