@@ -10,6 +10,97 @@ import { useState, useEffect } from "react";
 export default function MyWork() {
   const [showFooterText, setShowFooterText] = useState(true);
 
+  
+  const projectList = [
+    {
+      image:"roominate.png",
+      title:"Roominate",
+      description:"Full-stack app made with NextJS, TailwindCSS, ExpressJS, Prisma, and MongoDB to allow UCLA students to filter and search for roommates and roommate groups, complete with user authentication and authorization features. Made as a part of Software Construction class (CS 35L).",
+      links: [
+        {
+          name: "Github",
+          url: "https://github.com/ejinsw/roominate"
+        },
+        {
+          name: "More Info",
+          url: "https://docs.google.com/presentation/d/1tIICCtC1mLWKHqbUkMkQvDkFDilORmUkvyBITaaq5zI/edit?usp=sharing"
+        }
+      ]
+    },
+    {
+      image:"allgrow.png", 
+      title:"Allgrow educational app", 
+      description:"Mobile app made for Romanian non-profit Allgrow Association, created as a part of Develop For Good. Used React Native and Supabase to create user-authenticated app for project-based education system.",
+      links: [
+        {
+          name: "Case Study",
+          url: "https://developforgood.notion.site/AllGrow-App-Case-Study-188fbe7117c080bf8ca3d26f198f71db#188fbe7117c081118c7bcce3df6240cb"
+        },
+        {
+          name: "More info",
+          url: "https://docs.google.com/presentation/d/1yoci7nF5Xi1OkvuZA3gj0dkJ4zNwfK5bpVNCbzXVo4Q/edit#slide=id.g33111289283_0_1"
+        }
+      ]
+    },
+    {
+      image:"airacer.png", 
+      title:"Airacer Intern: AI SQL chatbot", 
+      description:"Over the Summer of 2024, I worked as an intern for Airacer, where I assisted in the effort to create an AI customer support chatbot. To do this, I worked with tools such as Langchain, Langgraph, MongoDB, and MySQL, to create a large language model agent that could query a database and answer user questions.",
+    },
+    {
+      image:"blink.png", 
+      title:"BLink: student team app", 
+      description:"I worked as a part of a UCLA DevX team to create a mobile app to notify students of free food and popups on campus. We used React Native, ExpressJS, MongoDB, and AWS to build this app and are in the process of deploying it to the app store.",
+      links: [
+        {
+          name: "Demo",
+          url: "https://drive.google.com/file/d/1hKBgRNGygMJ6vz0MgqpDv_Zeo5HVh16d/view?usp=sharing"
+        }
+      ]
+    },
+    {
+      image:"adblock.png", 
+      title:"Ad Blocker Chrome Extension", 
+      description:"Chrome extension created using HTML, C++ scripting, Javascript, and CSS for ad blocker that blocks over 10,000 ad domains. Implemented manual ad blocking and video ad skipping functionality.",
+      links: [
+        {
+          name: "Github",
+          url: "https://github.com/cuhs/AdBlocker"
+        }
+      ]
+    },
+    {
+      image: "MLcrises.png", 
+      title: "African Crises ML Research", 
+      description: "Engineered economic data and predicted economic crises by evaluating data in African countries using Python libraries like Pandas, PyTorch, and Scikit-Learn. Tested 3 different models and presented findings.",
+      links: [
+        {
+          name: "Research Paper",
+          url: "https://docs.google.com/document/d/1m1uxI2QJc-VQtGh4DwqLulsywsnPx7uUgPfbinBrwPc/edit?usp=sharing"
+        },
+        {
+          name: "Presentation",
+          url: "https://docs.google.com/presentation/d/1-PIDrqUsGwQBLzf20Rj-i290MVYNA_YjTYiEMaGOIiw/edit?usp=sharing"
+        }
+      ]
+    },
+    {
+      image: "RCJposter.png", 
+      title: "RoboCup Junior: Rescue Maze", 
+      description: "Implemented sensory depth first search navigation algorithms using C++ and Python, integrating OpenCV libraries with KNN machine learning to detect simulated victims and navigate randomly generated mazes. Won 1st place nationally, 4th internationally.",
+      links: [
+        {
+          name: "Presentation",
+          url: "https://docs.google.com/presentation/d/1CgderGgfNAWGIQ9CKd9YO8GfXwburPwyYsFkAENqaSM/edit?usp=sharing"
+        },
+        {
+          name: "Github",
+          url: "https://github.com/cuhs/Nerd-2021-2022-RCJ"
+        }
+      ]
+    }
+  ]
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -158,30 +249,22 @@ export default function MyWork() {
     viewport={{ once: true }}
   />
   <div className="flex flex-wrap justify-center gap-8 max-w-6xl">
-    <ProjectCard 
-      image="projectexample.png" 
-      title="UCLA Xplore"
-      description="AI-driven extracurricular planner using PostgreSQL database, LLM embeddings, and Python to recommend student activities. Utilized LangChain SQL querying agents to manage 300+ student club timeslots." 
-      link="/project-1" 
-    />
-    <ProjectCard 
-      image="projectexample.png" 
-      title="Ad Blocker Chrome Extension" 
-      description="Created Chrome extension using C++ scripting, HTML, JSON, Javascript, and CSS to create ad blocker for over 10,000 ad domains. Implemented manual ad blocking and video ad skipping functionality." 
-      link="/project-2" 
-    />
-    <ProjectCard 
-      image="projectexample.png" 
-      title="African Crises ML Research" 
-      description="Engineered economic data and predicted economic crises by evaluating data in African countries using Python libraries like Pandas, PyTorch, and Scikit-Learn. Tested 3 different models and presented findings." 
-      link="/team-project-1" 
-    />
-    <ProjectCard 
-      image="projectexample.png" 
-      title="RoboCup Junior: Rescue Maze" 
-      description="Implemented sensory depth first search navigation algorithms using C++ and Python, integrating OpenCV libraries with KNN machine learning to navigate randomly generated mazes. Won 1st place nationally." 
-      link="/team-project-2" 
-    />
+    {projectList.map((project, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        viewport={{ once: true }}
+      >
+        <ProjectCard 
+          image={project.image} 
+          title={project.title}
+          description={project.description} 
+          links={project.links}
+        />
+      </motion.div>
+    ))}
   </div>
 </section>
     </motion.div>

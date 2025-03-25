@@ -72,7 +72,7 @@ export default function AboutPage() {
                   alt="Alexander Hu" 
                   width={400} 
                   height={500} 
-                  className="rounded-xl transform hover:scale-105 transition-transform duration-500"
+                  className="rounded-xl transform transition-transform duration-500"
                   style={{ objectFit: 'cover' }}
                 />
               </div>
