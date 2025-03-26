@@ -24,10 +24,11 @@ This is a **custom-built** engineering portfolio showcasing **Alexander Hu's** p
 │   ├── ProjectCard.tsx  # Interactive project card component
 │
 ├── pages
-│   ├── index.tsx        # Main portfolio page with animated sections
-│
+│   ├── page.tsx        # Main portfolio page with animated sections=
+|   ├── about
+│   |    ├── page.tsx        # About page with additional information about Alex
 ├── public
-│   ├── projectexample.png # Placeholder project images
+│   ├── #stores all images used in the project
 │
 │
 ├── package.json         # Dependencies and scripts
