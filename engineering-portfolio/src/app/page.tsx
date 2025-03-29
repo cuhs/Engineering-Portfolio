@@ -235,35 +235,27 @@ export default function MyWork() {
   <motion.h1 
     className="text-4xl md:text-5xl mb-3 font-medium text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
     initial={{ opacity: 0, y: -10 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    viewport={{ once: true }}
   >
     My Projects
   </motion.h1>
   <motion.div
     className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-12"
     initial={{ width: 0 }}
-    whileInView={{ width: "6rem" }}
+    animate={{ width: "6rem" }}
     transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
   />
   <div className="flex flex-wrap justify-center gap-8 max-w-6xl">
     {projectList.map((project, index) => (
-      <motion.div
+      <ProjectCard 
         key={index}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true }}
-      >
-        <ProjectCard 
-          image={project.image} 
-          title={project.title}
-          description={project.description} 
-          links={project.links}
-        />
-      </motion.div>
+        image={project.image} 
+        title={project.title}
+        description={project.description} 
+        links={project.links}
+        delay={index}
+      />
     ))}
   </div>
 </section>

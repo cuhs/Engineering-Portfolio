@@ -11,12 +11,14 @@ export function ProjectCard({
   image, 
   title, 
   description, 
-  links
+  links,
+  delay = 0
 }: { 
   image: string; 
   title: string; 
   description: string;
   links?: LinkButton[];
+  delay?: number;
 }) {
   return (
     <div className="block w-full md:w-[450px] m-4">
@@ -34,18 +36,17 @@ export function ProjectCard({
           mass: 1.2
         }}
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
-        whileInView={{ 
+        animate={{ 
           opacity: 1, 
           y: 0, 
           scale: 1,
           transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-        delay: 0.1
+            type: "spring",
+            stiffness: 200,
+            damping: 20,
+            delay: 0.3 + delay * 0.1
           }
         }}
-        viewport={{ once: true, margin: "-50px" }}
       >
         <div className="relative overflow-hidden h-56">
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-40 z-10" />
