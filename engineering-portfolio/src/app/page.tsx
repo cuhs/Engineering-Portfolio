@@ -13,6 +13,32 @@ export default function MyWork() {
   
   const projectList = [
     {
+      image:"zeitios.png",
+      title:"Zeitios AI",
+      description:"Project Lead of a consulting team that developed an AI-powered video course generator that leverages LLM APIs to automatically create educational content. The system integrates AI text-to-speech technology and automated slideshow generation to transform text input into complete video lectures. Built as a part of DataRes Consulting working with the client Zeitios.",
+      links: [
+        {
+          name: "Github",
+          url: "https://github.com/cuhs/zeitios"
+        },
+        {
+          name: "More Info",
+          url: "https://docs.google.com/presentation/d/1s0J9AeFsgkG2AsYnmJRgNApBljsxAyFQ3eo5LMNmHwE/edit?usp=sharing"
+        }
+      ]
+    },
+    {
+      image:"accessible.png",
+      title:"Accessible AR (top 10 LA Hacks)",
+      description:"Developed Accessible AR, a Snapchat Spectacles Lens that enables virtual world building through American Sign Language (ASL), placing top 10 out of over 160 teams at LA Hacks 2025. The app uses AI-powered sign language detection and real-world surface recognition to allow users to generate and interact with 3D objects through ASL gestures.",
+      links: [
+        {
+          name: "DevPost",
+          url: "https://devpost.com/software/accessible-ar"
+        }
+      ]
+    },
+    {
       image:"roominate.png",
       title:"Roominate",
       description:"Full-stack app made with NextJS, TailwindCSS, ExpressJS, Prisma, and MongoDB to allow UCLA students to filter and search for roommates and roommate groups, complete with user authentication and authorization features. Made as a part of Software Construction class (CS 35L).",
@@ -50,7 +76,7 @@ export default function MyWork() {
     {
       image:"blink.png", 
       title:"BLink: student team app", 
-      description:"I worked as a part of a UCLA DevX team to create a mobile app to notify students of free food and popups on campus. We used React Native, ExpressJS, MongoDB, and AWS to build this app and are in the process of deploying it to the app store.",
+      description:"I worked as a part of a UCLA DevX team to create a mobile app to notify students of free food and popups on campus. We used React Native, ExpressJS, MongoDB, and AWS to build this app and have deployed it to the app store.",
       links: [
         {
           name: "Demo",
@@ -166,7 +192,11 @@ export default function MyWork() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Full-stack developer with an interest in 
+            <span className="relative inline-block px-2">
+              <span className="absolute inset-0 bg-cyan-900 bg-opacity-30 rounded-md blur-sm"></span>
+              <span className="relative text-cyan-400 font-medium">Full-stack developer</span>
+            </span>
+            with an interest in 
             <span className="relative inline-block px-2">
               <span className="absolute inset-0 bg-cyan-900 bg-opacity-30 rounded-md blur-sm"></span>
               <span className="relative text-cyan-400 font-medium">ML algorithms</span>
