@@ -4,12 +4,11 @@ import { motion } from "framer-motion";
 import { Header } from "../components/Header";
 import { ProjectCard } from "../components/ProjectCard";
 import { FaChevronDown } from "react-icons/fa";
-import "tailwindcss/tailwind.css";
+
 import { useState, useEffect } from "react";
 
 export default function MyWork() {
   const [showFooterText, setShowFooterText] = useState(true);
-
 
   const projectList = [
     {
@@ -153,58 +152,129 @@ export default function MyWork() {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
       <div className="absolute inset-0 bg-grid-subtle"></div>
+
+      {/* Floating particles */}
+      <div className="floating-particles">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              animationDelay: `${Math.random() * 20}s`,
+            }}
+          />
+        ))}
+      </div>
       <Header />
-      <section id="about" className="px-6 py-20 text-center min-h-screen flex flex-col justify-center relative max-w-6xl mx-auto">
-        <motion.h1
-          className="text-5xl md:text-7xl font-light mb-8 text-white tracking-tight"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          Alexander Hu
-        </motion.h1>
+      <section id="about" className="px-6 py-20 min-h-screen flex items-center relative max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+          {/* Left side - Text content */}
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <p className="text-emerald-400 font-mono text-sm mb-2">console.log(&quot;Hello, world!&quot;);</p>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+                Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Alex</span> 👋
+              </h1>
+              <h2 className="text-xl md:text-2xl text-slate-300 font-light">
+                Software Engineer & System Builder
+              </h2>
+            </motion.div>
 
-        <motion.h2
-          className="text-xl md:text-2xl font-normal mb-8 text-slate-300"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        >
-          Computer Science Major at <span className="text-blue-400 font-medium">UCLA</span>
-        </motion.h2>
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <p className="text-slate-300 leading-relaxed">
+                I&apos;m a Computer Science student at <span className="text-blue-400 font-medium">UCLA</span> passionate about building scalable software systems and architecting robust solutions.
+              </p>
+              <p className="text-slate-400 leading-relaxed">
+                From designing distributed systems to optimizing algorithms, I focus on creating
+                <span className="text-emerald-400 font-medium"> efficient</span> and
+                <span className="text-purple-400 font-medium"> maintainable code</span> that solves real-world problems.
+              </p>
+            </motion.div>
 
-        <motion.div
-          className="w-16 h-px mx-auto bg-gradient-to-r from-transparent via-slate-400 to-transparent mb-12"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        />
+            <motion.div
+              className="flex flex-wrap gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {["Software Engineer", "System Design", "Backend Architecture", "Open Source"].map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 rounded-full text-sm text-slate-300 backdrop-blur-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+          </div>
 
-        <motion.div
-          className="max-w-4xl mx-auto mb-16 space-y-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <motion.p
-            className="text-lg md:text-xl text-slate-300 leading-relaxed font-light"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+          {/* Right side - Creative visual element */}
+          <motion.div
+            className="relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
           >
-            Full-stack developer with a passion for <span className="text-blue-400 font-medium">machine learning</span> and <span className="text-emerald-400 font-medium">cybersecurity</span>
-          </motion.p>
-          <motion.p
-            className="text-lg md:text-xl text-slate-400 leading-relaxed font-light"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Developing data-driven software solutions both with a team and individually
-          </motion.p>
-        </motion.div>
+            <div className="relative">
+              {/* Floating code snippets */}
+              <motion.div
+                className="absolute -top-8 -left-8 bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-lg p-3 font-mono text-xs text-emerald-400"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                const skills = [&quot;React&quot;, &quot;Python&quot;, &quot;ML&quot;];
+              </motion.div>
 
-        <div className="flex justify-center">
+              <motion.div
+                className="absolute -bottom-4 -right-4 bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 rounded-lg p-3 font-mono text-xs text-blue-400"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                while(learning) {`{ code(); }`}
+              </motion.div>
+
+              {/* Main visual - Terminal-like window */}
+              <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 w-80 shadow-2xl">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="text-slate-400 text-xs ml-2 font-mono">~/alex-portfolio</span>
+                </div>
+                <div className="font-mono text-sm space-y-2">
+                  <div className="text-slate-400">$ whoami</div>
+                  <div className="text-white">Alexander Hu</div>
+                  <div className="text-slate-400">$ cat specialties.txt</div>
+                  <div className="text-emerald-400">• Software Architecture</div>
+                  <div className="text-blue-400">• Backend Systems</div>
+                  <div className="text-purple-400">• Database Design</div>
+                  <div className="text-cyan-400">• API Development</div>
+                  <motion.div
+                    className="text-slate-400 flex items-center"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    $ <span className="ml-1 bg-slate-400 w-2 h-4 inline-block"></span>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="flex justify-center mt-8">
           <motion.button
             onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             className="group relative overflow-hidden px-10 py-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/30 rounded-xl text-white font-medium transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-2xl"
@@ -215,7 +285,7 @@ export default function MyWork() {
             whileTap={{ scale: 0.98 }}
           >
             <span className="relative z-10 flex items-center space-x-3">
-              <span>See what I've built</span>
+              <span>See what I&apos;ve built</span>
               <motion.span
                 className="text-blue-400 text-sm"
                 animate={{ y: [0, 3, 0] }}
@@ -257,23 +327,25 @@ export default function MyWork() {
         )}
       </section>
 
-      <section id="projects" className="py-24 px-6 flex flex-col items-center relative max-w-7xl mx-auto">
-        <motion.h2
-          className="text-3xl md:text-4xl mb-4 font-light text-center text-white tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Featured Projects
-        </motion.h2>
-        <motion.p
-          className="text-slate-400 text-center mb-16 font-light max-w-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          A collection of projects showcasing full-stack development, machine learning, and innovative problem-solving
-        </motion.p>
+      <section id="projects" className="py-24 px-6 relative max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="inline-block"
+          >
+
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">
+              Things I&apos;ve <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Built</span>
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              From scalable web applications to distributed systems, here&apos;s a showcase of projects where
+              <span className="text-blue-400 font-medium"> engineering meets innovation</span>
+            </p>
+          </motion.div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {projectList.map((project, index) => (
             <ProjectCard

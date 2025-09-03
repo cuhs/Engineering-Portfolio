@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "tailwindcss/tailwind.css";
+
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 export function Header() {
