@@ -12,6 +12,17 @@ export default function MyWork() {
 
   const projectList = [
     {
+      image: "pltr_hacks.png",
+      title: "Palantir Hacks - First place (V2V AI Traffic Alerts)",
+      description: "Developed system that takes LiDAR sensor data of streets and maps vehicles by risk rating and traffic density in real-time on Palantir Foundry map. An AI agent then uses the data to create real-time NLP messages to individual drivers so they can avoid high-risk areas or areas with a lot of drivers tagged as 'dangerous'.",
+      links: [
+        {
+          name: "More Info",
+          url: "https://docs.google.com/presentation/d/1Vo31ciCCi2TR8HoXoxiFxSEksQcvpokZnbcksyUw96E/edit?usp=sharing"
+        }
+      ]
+    },
+    {
       image: "zeitios.png",
       title: "Zeitios AI",
       description: "Project Lead of a consulting team that developed an AI-powered video course generator that leverages LLM APIs to automatically create educational content. The system integrates AI text-to-speech technology and automated slideshow generation to transform text input into complete video lectures. Built as a part of DataRes Consulting working with the client Zeitios.",
