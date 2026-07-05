@@ -4,17 +4,19 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Header } from "../components/Header";
 import { BentoProjectCard } from "../components/BentoProjectCard";
+import { ExperienceCard } from "../components/ExperienceCard";
 import { TextReveal } from "../components/TextReveal";
 import { MagneticButton } from "../components/MagneticButton";
 import { SectionReveal } from "../components/SectionReveal";
 import { projectList } from "../data/projects";
-import { FaChevronDown } from "react-icons/fa";
+import { experienceList } from "../data/experience";
+import { FaChevronDown, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 const HeroScene = lazy(() =>
   import("../components/HeroScene").then((mod) => ({ default: mod.HeroScene }))
 );
 
-export default function MyWork() {
+export default function HomePage() {
   return (
     <motion.div
       className="bg-slate-950 text-white min-h-screen relative"
@@ -22,19 +24,17 @@ export default function MyWork() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Background layers */}
       <div className="fixed inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
       <div className="fixed inset-0 aurora-bg" />
       <div className="fixed inset-0 bg-grid-subtle" />
 
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section
-        id="about"
+        id="home"
         className="relative min-h-screen flex items-center overflow-hidden"
       >
-        {/* 3D Scene background */}
         <Suspense fallback={null}>
           <HeroScene />
         </Suspense>
@@ -47,12 +47,12 @@ export default function MyWork() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              console.log(&quot;Hello, world!&quot;);
+              UCLA Computer Science · Software Engineer
             </motion.p>
 
             <div className="mb-4">
               <TextReveal
-                text="Hi, I'm Alex"
+                text="Alexander Hu"
                 as="h1"
                 mode="char"
                 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight"
@@ -66,7 +66,7 @@ export default function MyWork() {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400">
-                Engineer.
+                I build software that ships.
               </span>
             </motion.div>
 
@@ -76,7 +76,7 @@ export default function MyWork() {
               transition={{ delay: 1, duration: 0.6 }}
             >
               <TextReveal
-                text="Software Engineer & System Builder"
+                text="Full-stack engineer with experience in AI systems, mobile apps, and production backends."
                 as="h2"
                 mode="word"
                 className="text-xl md:text-2xl text-slate-400 font-light mt-6"
@@ -91,10 +91,13 @@ export default function MyWork() {
               transition={{ delay: 1.4, duration: 0.8 }}
             >
               <p className="text-slate-400 leading-relaxed max-w-xl text-lg">
-                CS student at{" "}
-                <span className="text-blue-400 font-medium">UCLA</span>{" "}
-                passionate about building scalable software systems and
-                architecting robust solutions.
+                Incoming{" "}
+                <span className="text-blue-400 font-medium">Scale AI</span>{" "}
+                intern with experience at{" "}
+                <span className="text-emerald-400 font-medium">STR</span> and{" "}
+                <span className="text-purple-400 font-medium">Airacer</span>.
+                I build distributed systems, AI backends, and products used by
+                thousands of users.
               </p>
             </motion.div>
 
@@ -105,10 +108,10 @@ export default function MyWork() {
               transition={{ delay: 1.6, duration: 0.6 }}
             >
               {[
-                "Software Engineer",
-                "System Design",
-                "Backend Architecture",
-                "Open Source",
+                "Distributed Systems",
+                "AI / LLM Systems",
+                "Full-Stack Development",
+                "Systems Programming",
               ].map((tag, index) => (
                 <span
                   key={index}
@@ -120,7 +123,7 @@ export default function MyWork() {
             </motion.div>
 
             <motion.div
-              className="mt-12"
+              className="flex flex-wrap gap-4 mt-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.6 }}
@@ -135,7 +138,7 @@ export default function MyWork() {
                   className="group relative px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-blue-500/40 rounded-xl text-white font-medium transition-all duration-500 backdrop-blur-sm overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-3 font-display">
-                    See what I&apos;ve built
+                    View Projects
                     <motion.span
                       animate={{ y: [0, 3, 0] }}
                       transition={{
@@ -150,11 +153,20 @@ export default function MyWork() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </button>
               </MagneticButton>
+
+              <MagneticButton>
+                <a
+                  href="mailto:alexhu00374@gmail.com"
+                  className="group relative px-8 py-4 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/50 rounded-xl text-white font-medium transition-all duration-500 backdrop-blur-sm overflow-hidden inline-flex items-center gap-3 font-display"
+                >
+                  <FaEnvelope className="w-4 h-4" />
+                  Get in Touch
+                </a>
+              </MagneticButton>
             </motion.div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600"
           initial={{ opacity: 0 }}
@@ -180,26 +192,53 @@ export default function MyWork() {
         </motion.div>
       </section>
 
-      {/* Projects Section */}
+      {/* Experience */}
+      <section id="experience" className="py-24 md:py-32 px-6 relative">
+        <div className="max-w-4xl mx-auto">
+          <SectionReveal className="text-center mb-16 md:mb-20">
+            <p className="text-emerald-400 font-mono text-sm mb-4 tracking-wider">
+              experience
+            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+              Where I&apos;ve{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">
+                Worked
+              </span>
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed text-lg">
+              Internships, consulting, and team leadership — building real
+              products for real users.
+            </p>
+          </SectionReveal>
+
+          <div className="space-y-6">
+            {experienceList.map((experience, index) => (
+              <ExperienceCard
+                key={index}
+                experience={experience}
+                delay={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
       <section id="projects" className="py-24 md:py-32 px-6 relative">
         <div className="max-w-7xl mx-auto">
           <SectionReveal className="text-center mb-16 md:mb-20">
             <p className="text-blue-400 font-mono text-sm mb-4 tracking-wider">
-              // featured work
+              selected work
             </p>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-              Things I&apos;ve{" "}
+              Projects &{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                Built
+                Highlights
               </span>
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed text-lg">
-              From scalable web applications to distributed systems, here&apos;s
-              a showcase of projects where
-              <span className="text-blue-400 font-medium">
-                {" "}
-                engineering meets innovation
-              </span>
+              Hackathon wins, shipped apps, research, and open source — each
+              project reflects a problem I cared enough to solve end to end.
             </p>
           </SectionReveal>
 
@@ -219,9 +258,68 @@ export default function MyWork() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Contact */}
+      <section id="contact" className="py-24 md:py-32 px-6 relative">
+        <div className="max-w-3xl mx-auto text-center">
+          <SectionReveal>
+            <p className="text-purple-400 font-mono text-sm mb-4 tracking-wider">
+              contact
+            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
+              Let&apos;s{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                Connect
+              </span>
+            </h2>
+            <p className="text-slate-500 leading-relaxed text-lg mb-10">
+              Open to full-time software engineering opportunities for 2027.
+              Reach out — I&apos;d love to hear about your team.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <MagneticButton>
+                <a
+                  href="mailto:alexhu00374@gmail.com"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 hover:border-blue-400/50 rounded-xl text-white font-medium transition-all duration-300 font-display"
+                >
+                  <FaEnvelope className="w-4 h-4" />
+                  alexhu00374@gmail.com
+                </a>
+              </MagneticButton>
+
+              <MagneticButton strength={0.4}>
+                <a
+                  href="https://www.linkedin.com/in/alex-hu374/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/30 rounded-xl text-slate-300 hover:text-white font-medium transition-all duration-300"
+                >
+                  <FaLinkedin className="w-4 h-4" />
+                  LinkedIn
+                </a>
+              </MagneticButton>
+
+              <MagneticButton strength={0.4}>
+                <a
+                  href="https://github.com/cuhs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-xl text-slate-300 hover:text-white font-medium transition-all duration-300"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  GitHub
+                </a>
+              </MagneticButton>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
       <footer className="relative py-12 px-6 border-t border-slate-800/50">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-slate-600">
+            © {new Date().getFullYear()} Alexander Hu
+          </p>
           <p className="text-sm text-slate-600">
             Built with{" "}
             <span className="text-blue-400/60">Next.js</span>,{" "}
