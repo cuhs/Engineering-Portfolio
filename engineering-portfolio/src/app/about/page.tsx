@@ -35,11 +35,11 @@ const skillCategories = [
       "React / Next.js",
       "React Native",
       "Node.js / Express",
-      "MongoDB / MySQL",
+      "MongoDB / PostgreSQL",
+      "Docker / Linux",
+      "ZeroMQ / CI/CD",
       "AWS",
       "LangChain / LLMs",
-      "Supabase",
-      "Git / Linux",
     ],
   },
 ];
@@ -94,10 +94,10 @@ export default function AboutPage() {
               Alexander Hu
             </h2>
             <p className="text-slate-500 text-center mb-2 font-light">
-              Computer Science · UCLA
+              B.S. Computer Science · UCLA · Class of 2027
             </p>
             <p className="text-slate-600 text-center text-sm mb-6">
-              Seeking SWE internships & new grad roles
+              Incoming Scale AI intern · GPA 3.82
             </p>
 
             <MagneticButton>
@@ -148,12 +148,15 @@ export default function AboutPage() {
                       B.S. Computer Science
                     </p>
                     <p className="text-blue-400">University of California, Los Angeles</p>
+                    <p className="text-slate-500 text-sm mt-1">
+                      Expected June 2027 · GPA 3.82
+                    </p>
                   </div>
                   <p>
-                    Coursework spans full-stack development, machine learning,
-                    operating systems, and cybersecurity. I apply what I learn
-                    through internships, hackathons, and team projects — from
-                    LLM-powered backends to mobile apps deployed on the App Store.
+                    Coursework in deep learning, algorithms, software construction,
+                    systems security, and networking. I apply what I learn through
+                    internships at Scale AI, STR, and Airacer — from distributed
+                    command buses to LLM-powered backends.
                   </p>
                   <p>
                     Outside of code, I stay active with tennis, rock climbing,

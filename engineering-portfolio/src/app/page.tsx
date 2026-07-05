@@ -91,12 +91,13 @@ export default function HomePage() {
               transition={{ delay: 1.4, duration: 0.8 }}
             >
               <p className="text-slate-400 leading-relaxed max-w-xl text-lg">
-                From winning{" "}
-                <span className="text-blue-400 font-medium">Palantir Hacks</span>{" "}
-                to shipping apps on the{" "}
-                <span className="text-emerald-400 font-medium">App Store</span>, I
-                turn ideas into reliable, user-facing products. Currently seeking
-                software engineering internships and new grad roles.
+                Incoming{" "}
+                <span className="text-blue-400 font-medium">Scale AI</span>{" "}
+                intern with experience at{" "}
+                <span className="text-emerald-400 font-medium">STR</span> and{" "}
+                <span className="text-purple-400 font-medium">Airacer</span>.
+                I build distributed systems, AI backends, and products used by
+                thousands of users.
               </p>
             </motion.div>
 
@@ -107,10 +108,10 @@ export default function HomePage() {
               transition={{ delay: 1.6, duration: 0.6 }}
             >
               {[
-                "Full-Stack Development",
+                "Distributed Systems",
                 "AI / LLM Systems",
-                "Mobile (React Native)",
-                "Hackathon Winner",
+                "Full-Stack Development",
+                "Systems Programming",
               ].map((tag, index) => (
                 <span
                   key={index}
@@ -271,7 +272,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-slate-500 leading-relaxed text-lg mb-10">
-              Open to software engineering internships and full-time opportunities.
+              Open to full-time software engineering opportunities for 2027.
               Reach out — I&apos;d love to hear about your team.
             </p>
 

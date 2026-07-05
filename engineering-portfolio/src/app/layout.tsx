@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Alexander Hu — Software Engineer",
   description:
-    "UCLA Computer Science student and software engineer. Full-stack development, AI/LLM systems, and mobile apps. Palantir Hacks winner. Open to internships and new grad roles.",
+    "UCLA Computer Science student and software engineer. Incoming Scale AI intern with experience at STR and Airacer. Distributed systems, AI/LLM backends, and full-stack development.",
   openGraph: {
     title: "Alexander Hu — Software Engineer",
     description:
