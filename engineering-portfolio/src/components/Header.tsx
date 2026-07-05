@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { ScrollProgress } from "./ScrollProgress";
 import { MagneticButton } from "./MagneticButton";
 
@@ -14,7 +14,11 @@ export function Header() {
   const [activeLink, setActiveLink] = useState(isHomePage ? "home" : "about");
 
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    if (isHomePage) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    window.location.href = `/#${sectionId}`;
   };
 
   const navLinks = [
@@ -23,11 +27,22 @@ export function Header() {
       label: "Home",
       action: isHomePage
         ? () => {
-            scrollToSection("about");
+            scrollToSection("home");
             setActiveLink("home");
           }
         : undefined,
       href: isHomePage ? undefined : "/",
+    },
+    {
+      id: "experience",
+      label: "Experience",
+      action: isHomePage
+        ? () => {
+            scrollToSection("experience");
+            setActiveLink("experience");
+          }
+        : undefined,
+      href: isHomePage ? undefined : "/#experience",
     },
     {
       id: "projects",
@@ -45,23 +60,37 @@ export function Header() {
       label: "About",
       href: "/about",
     },
+    {
+      id: "contact",
+      label: "Contact",
+      action: isHomePage
+        ? () => {
+            scrollToSection("contact");
+            setActiveLink("contact");
+          }
+        : undefined,
+      href: isHomePage ? undefined : "/#contact",
+    },
   ];
 
   const socialLinks = [
     {
+      href: "mailto:alexhu00374@gmail.com",
+      icon: FaEnvelope,
+      hoverColor: "hover:text-blue-400",
+      label: "Email",
+    },
+    {
       href: "https://www.linkedin.com/in/alex-hu374/",
       icon: FaLinkedin,
       hoverColor: "hover:text-blue-400",
+      label: "LinkedIn",
     },
     {
       href: "https://github.com/cuhs",
       icon: FaGithub,
       hoverColor: "hover:text-white",
-    },
-    {
-      href: "https://instagram.com/alexhu374",
-      icon: FaInstagram,
-      hoverColor: "hover:text-pink-400",
+      label: "GitHub",
     },
   ];
 
@@ -69,7 +98,7 @@ export function Header() {
     <>
       <ScrollProgress />
       <nav className="fixed top-0 w-full px-6 py-4 flex justify-between items-center text-white bg-slate-950/60 backdrop-blur-xl border-b border-white/5 z-50">
-        <div className="flex items-center space-x-8 text-sm font-medium">
+        <div className="flex items-center space-x-6 md:space-x-8 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive =
               link.id === "about"
@@ -128,8 +157,9 @@ export function Header() {
             <MagneticButton key={index} strength={0.4}>
               <a
                 href={social.href}
-                target="_blank"
+                target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel="noopener noreferrer"
+                aria-label={social.label}
                 className={`text-slate-500 ${social.hoverColor} transition-colors duration-300 p-2 block`}
               >
                 <social.icon size={16} />

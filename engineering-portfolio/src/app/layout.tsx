@@ -13,8 +13,15 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Alexander Hu",
-  description: "Alexander Hu's engineering portfolio",
+  title: "Alexander Hu — Software Engineer",
+  description:
+    "UCLA Computer Science student and software engineer. Full-stack development, AI/LLM systems, and mobile apps. Palantir Hacks winner. Open to internships and new grad roles.",
+  openGraph: {
+    title: "Alexander Hu — Software Engineer",
+    description:
+      "Full-stack engineer building AI systems, mobile apps, and production backends. UCLA CS. Palantir Hacks winner.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
