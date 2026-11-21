@@ -3,11 +3,11 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Header } from "../components/Header";
-import { BentoProjectCard } from "../components/BentoProjectCard";
 import { TextReveal } from "../components/TextReveal";
 import { MagneticButton } from "../components/MagneticButton";
 import { SectionReveal } from "../components/SectionReveal";
-import { projectList } from "../data/projects";
+import { ProjectCategorySection } from "../components/ProjectCategorySection";
+import { projectCategories } from "../data/projects";
 import { FaChevronDown } from "react-icons/fa";
 
 const HeroScene = lazy(() =>
@@ -185,7 +185,7 @@ export default function MyWork() {
         <div className="max-w-7xl mx-auto">
           <SectionReveal className="text-center mb-16 md:mb-20">
             <p className="text-blue-400 font-mono text-sm mb-4 tracking-wider">
-              // featured work
+              // projects
             </p>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
               Things I&apos;ve{" "}
@@ -203,19 +203,20 @@ export default function MyWork() {
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {projectList.map((project, index) => (
-              <BentoProjectCard
-                key={index}
-                image={project.image}
-                title={project.title}
-                description={project.description}
-                links={project.links}
-                featured={project.featured}
-                delay={index}
+          {projectCategories.map((category, categoryIndex) => {
+            const delayOffset = projectCategories
+              .slice(0, categoryIndex)
+              .reduce((sum, cat) => sum + cat.projects.length, 0);
+
+            return (
+              <ProjectCategorySection
+                key={category.id}
+                category={category}
+                isFirst={categoryIndex === 0}
+                delayOffset={delayOffset}
               />
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 

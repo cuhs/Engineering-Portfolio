@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaPlay } from "react-icons/fa";
 
 interface LinkButton {
   name: string;
@@ -12,6 +12,7 @@ interface LinkButton {
 
 export function BentoProjectCard({
   image,
+  video,
   title,
   description,
   links,
@@ -19,6 +20,7 @@ export function BentoProjectCard({
   delay = 0,
 }: {
   image: string;
+  video?: string;
   title: string;
   description: string;
   links?: LinkButton[];
@@ -26,8 +28,10 @@ export function BentoProjectCard({
   delay?: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
@@ -40,9 +44,21 @@ export function BentoProjectCard({
     });
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
   const handleMouseLeave = () => {
     setTilt({ rotateX: 0, rotateY: 0 });
     setIsHovered(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsVideoPlaying(false);
+    }
   };
 
   return (
@@ -65,10 +81,9 @@ export function BentoProjectCard({
             transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
           }}
           onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Glow effect on hover */}
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
             style={{
@@ -78,36 +93,58 @@ export function BentoProjectCard({
             }}
           />
 
-          {/* Image */}
           <div className="relative overflow-hidden h-48">
             <motion.div
               className="w-full h-full"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <Image
-                src={`/${image}`}
-                alt={title}
-                width={800}
-                height={400}
-                className="w-full h-full object-cover"
-              />
+              {video ? (
+                <video
+                  ref={videoRef}
+                  src={`/${video}`}
+                  poster={`/${image}`}
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  onPlaying={() => setIsVideoPlaying(true)}
+                  onPause={() => setIsVideoPlaying(false)}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={`/${image}`}
+                  alt={title}
+                  width={800}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </motion.div>
+
+            {video && !isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-10 h-10 rounded-full bg-slate-900/60 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <FaPlay className="w-3 h-3 text-white ml-0.5" />
+                </div>
+              </div>
+            )}
+
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
           </div>
 
-          {/* Content */}
           <div className="p-5 md:p-6 space-y-3 relative">
             <div>
-              <h3
-                className="text-lg font-display font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300"
-              >
+              <h3 className="text-lg font-display font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
                 {title}
               </h3>
               <div className="w-10 h-[2px] bg-gradient-to-r from-blue-400 to-emerald-400 rounded-full group-hover:w-16 transition-all duration-500" />
             </div>
 
-            <p className={`text-slate-400 ${featured ? "text-sm" : "text-sm"} leading-relaxed line-clamp-4`}>
+            <p
+              className={`text-slate-400 ${featured ? "text-sm" : "text-sm"} leading-relaxed line-clamp-4`}
+            >
               {description}
             </p>
 
